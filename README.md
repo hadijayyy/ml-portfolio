@@ -26,7 +26,7 @@ ML Engineer with hands-on experience across the full pipeline — from explorato
 
 ## 📁 Case Study 1 — Credit Risk Scoring for BNPL Fintech
 
-📂 [`/case-study-1/`](./case-study-1/)
+📂 [`./case_study_1/`](./case_study_1/)
 
 ### 🔍 Problem
 
@@ -133,13 +133,13 @@ existing_loan_count      ████                  0.08
 
 **Deployment:** Served via FastAPI endpoint with sub-100ms P95 latency. Model retrained monthly with drift monitoring via Evidently AI.
 
-📂 **Files:** [`notebook.ipynb`](./case-study-1/notebook.ipynb) · [`model_pipeline.py`](./case-study-1/model_pipeline.py) · [`eda_report.html`](./case-study-1/eda_report.html)
+📂 **Files:** [`notebook.ipynb`](./case_study_1/notebook.ipynb) · [`model_pipeline.py`](./case_study_1/model_pipeline.py) · [`eda_report.html`](./case_study_1/eda_report.html)
 
 ---
 
 ## 📁 Case Study 2 — B2B SaaS Churn Prediction & Intervention Engine
 
-📂 [`/case-study-2/`](./case-study-2/)
+📂 [`./case_study_2/`](./case_study_2/)
 
 ### 🔍 Problem
 
@@ -259,7 +259,7 @@ Top 5 At-Risk Accounts (of 32 flagged):
 - CS team reported **3× improvement** in intervention efficiency (right accounts, right time)
 - Model became part of the weekly ops rhythm within 6 weeks
 
-📂 **Files:** [`notebook.ipynb`](./case-study-2/notebook.ipynb) · [`churn_pipeline.py`](./case-study-2/churn_pipeline.py) · [`survival_analysis.ipynb`](./case-study-2/survival_analysis.ipynb)
+📂 **Files:** [`notebook.ipynb`](./case_study_2/notebook.ipynb) · [`churn_pipeline.py`](./case_study_2/churn_pipeline.py) · [`survival_analysis.ipynb`](./case_study_2/survival_analysis.ipynb)
 
 ---
 
@@ -282,12 +282,12 @@ Experiment   Optuna, MLflow
 ```
 portfolio/
 ├── README.md                    ← You are here
-├── case-study-1/                ← Credit Risk (Fintech)
+├── case_study_1/                ← Credit Risk (Fintech)
 │   ├── README.md
 │   ├── notebook.ipynb
 │   ├── model_pipeline.py
 │   └── eda_report.html
-└── case-study-2/                ← Churn Prediction (B2B SaaS)
+└── case_study_2/                ← Churn Prediction (B2B SaaS)
     ├── README.md
     ├── notebook.ipynb
     ├── churn_pipeline.py
