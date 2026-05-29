@@ -223,8 +223,10 @@ if __name__ == "__main__":
     logger.info("Training churn model...")
     model = train_churn_model(df_demo)
 
+    logger.info("\nEngineering survival features...")
+    df_surv = engineer_churn_features(df_demo)
     logger.info("\nRunning survival analysis...")
-    cph = run_survival_analysis(df_demo)
+    cph = run_survival_analysis(df_surv)
 
     logger.info("\nGenerating weekly alert (top 10 shown):")
     alert = generate_weekly_alert(model, df_demo, cph, top_n=10)
