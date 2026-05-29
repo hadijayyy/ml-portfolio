@@ -220,14 +220,27 @@ if __name__ == "__main__":
         "churned": np.random.binomial(1, 0.12, n),
     })
 
-    logger.info("Training churn model...")
-    model = train_churn_model(df_demo)
+    from sklearn.model_selection import train_test_split
+    df_train, df_test = train_test_split(df_demo, test_size=0.2, random_state=42)
+
+    logger.info(f"Training churn model on {len(df_train)} rows...")
+    model = train_churn_model(df_train)
+
+    logger.info(f"\nEvaluating on {len(df_test)} hold-out rows...")
+    df_test_eng = engineer_churn_features(df_test)
+    X_test = df_test_eng[FEATURES].fillna(df_test_eng[FEATURES].median())
+    y_test = df_test_eng[TARGET]
+    y_proba = model.predict_proba(X_test)[:, 1]
+    logger.info(f"Test ROC-AUC: {roc_auc_score(y_test, y_proba):.4f}")
+    logger.info(f"Test Precision@30: {precision_at_k(y_test, y_proba, k=30):.2%}")
+    from sklearn.metrics import average_precision_score
+    logger.info(f"Test PR-AUC: {average_precision_score(y_test, y_proba):.4f}")
 
     logger.info("\nEngineering survival features...")
-    df_surv = engineer_churn_features(df_demo)
-    logger.info("\nRunning survival analysis...")
+    df_surv = engineer_churn_features(df_train)
+    logger.info("\nRunning survival analysis on training data...")
     cph = run_survival_analysis(df_surv)
 
     logger.info("\nGenerating weekly alert (top 10 shown):")
-    alert = generate_weekly_alert(model, df_demo, cph, top_n=10)
+    alert = generate_weekly_alert(model, df_test, cph, top_n=10)
     print(alert.to_string())

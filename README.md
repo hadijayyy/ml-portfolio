@@ -11,7 +11,7 @@ ML Engineer with hands-on experience across the full pipeline — from explorato
 **Stack:** Python (Pandas, Scikit-learn, XGBoost, PyTorch) · SQL · Tableau/Power BI · Docker · FastAPI  
 **Strengths:** End-to-end ML pipelines · Feature engineering · Model interpretability · Stakeholder communication
 
-📬 [LinkedIn](#) · 📧 your@email.com
+📬 [LinkedIn](https://linkedin.com/in/hadijayyy) · 📧 ryanhadi.career@gmail.com
 
 ---
 
@@ -53,7 +53,7 @@ A Buy Now Pay Later (BNPL) startup was experiencing a **default rate of ~18%** o
 **Key findings during EDA:**
 - `payment_delay_60d` had the strongest univariate correlation with default (φ = 0.41)
 - ~12% missing values in bureau data — imputed using KNN imputer grouped by employment type
-- Severe class imbalance: 82% non-default vs 18% default → required SMOTE + scale_pos_weight tuning
+- Severe class imbalance: 82% non-default vs 18% default → handled via `scale_pos_weight` tuning in XGBoost
 - Discovered that customers with 0 app opens in 7 days pre-due-date had 3.2× higher default rate (behavioral signal)
 
 ```python

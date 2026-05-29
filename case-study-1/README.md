@@ -3,7 +3,7 @@
 > Reducing loan default rates by 23% using XGBoost + SHAP — without sacrificing approval volume.
 
 **Domain:** Fintech / Credit Risk  
-**Techniques:** XGBoost, SHAP, Optuna, KNN Imputation, SMOTE, Threshold Optimization  
+**Techniques:** XGBoost, SHAP, Optuna, KNN Imputation, Threshold Optimization  
 **Metrics:** PR-AUC 0.79 · KS Statistic 0.58 · Default Rate ↓ 23%
 
 ---

@@ -96,7 +96,6 @@ def build_objective(X_train, y_train, preprocessor):
             "reg_alpha": trial.suggest_float("reg_alpha", 1e-4, 1.0, log=True),
             "reg_lambda": trial.suggest_float("reg_lambda", 1e-4, 1.0, log=True),
             "eval_metric": "aucpr",
-            "use_label_encoder": False,
             "random_state": 42,
         }
         pipeline = Pipeline([
@@ -125,7 +124,7 @@ def train(df: pd.DataFrame, n_trials: int = 50):
     study.optimize(build_objective(X, y, preprocessor), n_trials=n_trials, show_progress_bar=True)
 
     best_params = study.best_params
-    best_params.update({"eval_metric": "aucpr", "use_label_encoder": False, "random_state": 42})
+    best_params.update({"eval_metric": "aucpr", "random_state": 42})
 
     logger.info(f"Best PR-AUC: {study.best_value:.4f}")
     logger.info(f"Best params: {best_params}")
@@ -198,6 +197,7 @@ def predict(pipeline, df: pd.DataFrame, threshold: float = 0.38) -> pd.DataFrame
 if __name__ == "__main__":
     # Example usage with synthetic data
     import warnings
+    from sklearn.model_selection import train_test_split
     warnings.filterwarnings("ignore")
 
     logger.info("Generating synthetic dataset for demo...")
@@ -219,6 +219,10 @@ if __name__ == "__main__":
         "is_default": np.random.binomial(1, 0.18, n),  # ~18% default rate
     })
 
-    pipeline, X, y = train(df_demo, n_trials=10)  # 10 trials for demo speed
+    df_train, df_test = train_test_split(df_demo, test_size=0.2, random_state=42)
+    logger.info(f"Train: {len(df_train)} rows, Test: {len(df_test)} rows")
+
+    pipeline, X_train, y_train = train(df_train, n_trials=10)  # 10 trials for demo speed
+    evaluate(pipeline, engineer_features(df_test)[NUMERIC_FEATURES + CATEGORICAL_FEATURES + ["pre_due_inactive", "debt_burden_ratio", "payment_stress"]], df_test[TARGET])
     logger.info("\nSample predictions:")
-    print(predict(pipeline, df_demo.head(5)))
+    print(predict(pipeline, df_test.head(10)))

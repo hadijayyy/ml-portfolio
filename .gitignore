@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+
+# ML artifacts
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.onnx
+xgboost_tuning.db
+optuna*.log
+
+# Data
+*.csv
+*.parquet
+*.json
+*.xlsx
+
+# EDA reports
+*_report.html
+sweetviz_*.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+venv/
+.venv/
