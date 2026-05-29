@@ -84,7 +84,6 @@ df.groupby('pre_due_inactive')['is_default'].mean()
 | Logistic Regression (baseline) | 0.61 | 0.58 | 0.41 |
 | Random Forest | 0.71 | 0.64 | 0.49 |
 | **XGBoost (tuned)** | **0.79** | **0.72** | **0.58** |
-| XGBoost + SMOTE | 0.77 | 0.74 | 0.56 |
 
 > **Why PR-AUC over ROC-AUC?** With class imbalance, PR-AUC is more informative — it focuses on the minority class (defaults) where business cost is highest.
 
@@ -94,9 +93,9 @@ def objective(trial):
     params = {
         'n_estimators': trial.suggest_int('n_estimators', 100, 500),
         'max_depth': trial.suggest_int('max_depth', 3, 8),
-        'learning_rate': trial.suggest_float('lr', 0.01, 0.3, log=True),
+        'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.3, log=True),
         'subsample': trial.suggest_float('subsample', 0.6, 1.0),
-        'scale_pos_weight': trial.suggest_float('spw', 3.0, 6.0)
+        'scale_pos_weight': trial.suggest_float('scale_pos_weight', 3.0, 6.0)
     }
     model = XGBClassifier(**params)
     return cross_val_score(model, X_train, y_train, scoring='average_precision', cv=5).mean()
@@ -211,9 +210,9 @@ cph.fit(df_survival, duration_col='tenure_days', event_col='churned')
 cph.print_summary()
 
 # Key hazard ratios:
-# active_users_l30:     HR = 0.71 (more users = lower churn risk)
+# user_engagement_ratio: HR = 1.87 (low engagement = higher churn risk)
 # had_payment_failure:  HR = 3.82 (payment failure → 3.8x higher risk)
-# avg_feature_depth:    HR = 0.58 (deeper usage = lower risk)
+# product_stickiness:   HR = 0.58 (deeper usage = lower risk)
 ```
 
 **Then Random Forest classifier for churn probability score:**

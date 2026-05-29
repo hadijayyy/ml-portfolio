@@ -222,7 +222,7 @@ if __name__ == "__main__":
     df_train, df_test = train_test_split(df_demo, test_size=0.2, random_state=42)
     logger.info(f"Train: {len(df_train)} rows, Test: {len(df_test)} rows")
 
-    pipeline, X_train, y_train = train(df_train, n_trials=10)  # 10 trials for demo speed
+    pipeline, X_train, y_train = train(df_train, n_trials=40)  # 40 trials for demo
     evaluate(pipeline, engineer_features(df_test)[NUMERIC_FEATURES + CATEGORICAL_FEATURES + ["pre_due_inactive", "debt_burden_ratio", "payment_stress"]], df_test[TARGET])
     logger.info("\nSample predictions:")
     print(predict(pipeline, df_test.head(10)))
