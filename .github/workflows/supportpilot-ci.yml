@@ -1,0 +1,33 @@
+name: SupportPilot CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "supportpilot/**"
+      - ".github/workflows/supportpilot-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "supportpilot/**"
+      - ".github/workflows/supportpilot-ci.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: supportpilot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run evaluation and tests
+        run: npm run verify
+      - name: Syntax-check APIs and LLM adapter
+        run: |
+          node --check api/resolve.js
+          node --check api/evaluation.js
+          node --check api/health.js
+          node --check src/llm.js
