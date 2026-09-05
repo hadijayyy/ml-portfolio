@@ -1,0 +1,32 @@
+name: OpsPilot CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "opspilot/**"
+      - ".github/workflows/opspilot-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "opspilot/**"
+      - ".github/workflows/opspilot-ci.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: opspilot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run regression evaluation and tests
+        run: npm run verify
+      - name: Syntax-check serverless and model adapters
+        run: |
+          node --check api/investigate.js
+          node --check api/evaluation.js
+          node --check src/llm.js
