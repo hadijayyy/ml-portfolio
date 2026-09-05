@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-09-05T15:24:59.250Z",
+  "cases": 16,
+  "classificationAccuracy": 100,
+  "retrievalHitAt3": 100,
+  "approvalGateAccuracy": 100,
+  "averageEvidenceScore": 80,
+  "passed": true,
+  "rows": [
+    {"id":"auth-1","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":91,"topIssue":8328},
+    {"id":"auth-2","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":82,"topIssue":8328},
+    {"id":"auth-3","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":81,"topIssue":8328},
+    {"id":"avail-1","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":92,"topIssue":8331},
+    {"id":"avail-2","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":94,"topIssue":8330},
+    {"id":"avail-3","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":89,"topIssue":8331},
+    {"id":"mem-1","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":69,"topIssue":8327},
+    {"id":"mem-2","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":70,"topIssue":8327},
+    {"id":"perf-1","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":81,"topIssue":8393},
+    {"id":"perf-2","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":66,"topIssue":8393},
+    {"id":"integrity-1","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":77,"topIssue":8359},
+    {"id":"integrity-2","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":82,"topIssue":8308},
+    {"id":"integrity-3","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":82,"topIssue":8365},
+    {"id":"schema-1","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":77,"topIssue":8241},
+    {"id":"schema-2","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":77,"topIssue":8341},
+    {"id":"schema-3","categoryOk":true,"retrievalHit":true,"approvalOk":true,"evidenceScore":70,"topIssue":8341}
+  ]
+}
