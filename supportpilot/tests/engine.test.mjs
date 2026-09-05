@@ -1,0 +1,11 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {resolveSupport} from "../src/engine.js";
+import {goldenCases} from "../eval/golden.js";
+for(const c of goldenCases)test(`golden ${c.id}`,()=>{const r=resolveSupport(c.message);assert.equal(r.classification.intent,c.intent);assert.equal(r.risk.approval,c.approval);if(c.order)assert.equal(r.context.order?.orderId,c.order);});
+test("unknown request never fabricates customer or order",()=>{const r=resolveSupport("Do you offer student discounts?");assert.equal(r.context.accountMatched,false);assert.equal(r.context.orderMatched,false);});
+test("duplicate charge is detected from payment ledger",()=>{const r=resolveSupport("ORD-1005 I was charged twice");assert.match(r.resolution,/duplicate captured payment/i);assert.equal(r.risk.approval,true);});
+test("eligible processing order is cancellation candidate but not auto-executed",()=>{const r=resolveSupport("Please cancel ORD-1003 before shipping");assert.match(r.resolution,/policy-eligible/i);assert.equal(r.risk.approval,true);});
+test("wrong item compares ordered and fulfilled SKU",()=>{const r=resolveSupport("ORD-1004 wrong item arrived");assert.match(r.resolution,/SKU mismatch/i);});
+test("account recovery path does not expose secrets",()=>{const r=resolveSupport("I cannot login after password reset");assert.doesNotMatch(r.suggestedReply,/password is|token is|secret/i);});
+test("evidence score is explicitly separate from classifier confidence",()=>{const r=resolveSupport("ORD-1001 package tracking late");assert.equal(typeof r.evidenceScore,"number");assert.equal(typeof r.classification.confidence,"number");});
