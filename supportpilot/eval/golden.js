@@ -1,0 +1,20 @@
+export const goldenCases=[
+{id:"track-1",message:"CUST-001 ORD-1001 where is my package? It is late and tracking has not moved",intent:"order_status",approval:false,order:"ORD-1001"},
+{id:"track-2",message:"ORD-1001 delivery date passed, where is the shipment",intent:"order_status",approval:false,order:"ORD-1001"},
+{id:"cancel-1",message:"CUST-003 please cancel order ORD-1003 before it ships",intent:"cancel_order",approval:true,order:"ORD-1003"},
+{id:"cancel-2",message:"I need to cancel my order ORD-1003",intent:"cancel_order",approval:true,order:"ORD-1003"},
+{id:"damage-1",message:"ORD-1002 arrived damaged and broken",intent:"damaged_item",approval:true,order:"ORD-1002"},
+{id:"damage-2",message:"CUST-002 the cookware from ORD-1002 is cracked",intent:"damaged_item",approval:true,order:"ORD-1002"},
+{id:"wrong-1",message:"ORD-1004 you sent me the wrong item",intent:"wrong_item",approval:true,order:"ORD-1004"},
+{id:"wrong-2",message:"The product in ORD-1004 is a different SKU than what I ordered",intent:"wrong_item",approval:true,order:"ORD-1004"},
+{id:"pay-1",message:"ORD-1005 charged twice for one order",intent:"payment_issue",approval:true,order:"ORD-1005"},
+{id:"pay-2",message:"CUST-005 I have a duplicate charge on ORD-1005",intent:"payment_issue",approval:true,order:"ORD-1005"},
+{id:"refund-1",message:"What is the refund status for ORD-1006? I still do not see my money",intent:"refund_request",approval:true,order:"ORD-1006"},
+{id:"refund-2",message:"CUST-001 I want a refund for order ORD-1006",intent:"refund_request",approval:true,order:"ORD-1006"},
+{id:"return-1",message:"How can I return order ORD-1002?",intent:"return_request",approval:false,order:"ORD-1002"},
+{id:"return-2",message:"I need a return label for ORD-1004",intent:"return_request",approval:false,order:"ORD-1004"},
+{id:"account-1",message:"I cannot log in after resetting my password",intent:"account_access",approval:false,order:null},
+{id:"account-2",message:"My account is locked and login does not work",intent:"account_access",approval:false,order:null},
+{id:"general-1",message:"Can you tell me whether you sell gift cards?",intent:"general",approval:false,order:null},
+{id:"general-2",message:"I have a question about your store",intent:"general",approval:false,order:null}
+];
