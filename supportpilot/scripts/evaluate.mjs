@@ -1,0 +1,10 @@
+import fs from "node:fs";
+import {resolveSupport} from "../src/engine.js";
+import {goldenCases} from "../eval/golden.js";
+const rows=goldenCases.map(c=>{const r=resolveSupport(c.message);return{id:c.id,intentOk:r.classification.intent===c.intent,approvalOk:r.risk.approval===c.approval,orderOk:c.order? r.context.order?.orderId===c.order:true,evidenceScore:r.evidenceScore};});
+const pct=k=>Math.round(rows.filter(r=>r[k]).length/rows.length*100);
+const report={generatedAt:new Date().toISOString(),cases:rows.length,intentAccuracy:pct("intentOk"),approvalGateAccuracy:pct("approvalOk"),orderLookupAccuracy:pct("orderOk"),averageEvidenceScore:Math.round(rows.reduce((a,b)=>a+b.evidenceScore,0)/rows.length),passed:rows.every(r=>r.intentOk&&r.approvalOk&&r.orderOk),rows};
+fs.mkdirSync(new URL("../eval/",import.meta.url),{recursive:true});
+fs.writeFileSync(new URL("../eval/report.json",import.meta.url),JSON.stringify(report,null,2));
+console.log(JSON.stringify(report,null,2));
+if(!report.passed)process.exitCode=1;
