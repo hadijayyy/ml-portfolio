@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-09-05T17:34:17.388Z",
+  "cases": 18,
+  "intentAccuracy": 100,
+  "approvalGateAccuracy": 100,
+  "orderLookupAccuracy": 100,
+  "averageEvidenceScore": 77,
+  "passed": true,
+  "rows": [
+    {"id":"track-1","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":88},
+    {"id":"track-2","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":85},
+    {"id":"cancel-1","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":88},
+    {"id":"cancel-2","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":86},
+    {"id":"damage-1","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":81},
+    {"id":"damage-2","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":69},
+    {"id":"wrong-1","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":91},
+    {"id":"wrong-2","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":73},
+    {"id":"pay-1","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":84},
+    {"id":"pay-2","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":71},
+    {"id":"refund-1","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":81},
+    {"id":"refund-2","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":84},
+    {"id":"return-1","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":82},
+    {"id":"return-2","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":81},
+    {"id":"account-1","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":77},
+    {"id":"account-2","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":66},
+    {"id":"general-1","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":50},
+    {"id":"general-2","intentOk":true,"approvalOk":true,"orderOk":true,"evidenceScore":45}
+  ]
+}
