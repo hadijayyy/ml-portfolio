@@ -1,0 +1,1 @@
+export default function handler(req,res){res.setHeader("Cache-Control","no-store");return res.status(200).json({status:"ok",service:"opspilot",version:"2.0.0",mode:process.env.OPENAI_API_KEY?"model-enhanced":"deterministic-demo"})}
